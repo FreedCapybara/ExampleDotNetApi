@@ -32,6 +32,9 @@ namespace ExampleDotNetApi
             // MVC
             services.AddControllers();
 
+            // CORS
+            services.AddCors();
+
             // DbContext
             services.AddDbContext<ApplicationDbContext>((options) =>
             {
@@ -52,6 +55,14 @@ namespace ExampleDotNetApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors((policy) =>
+            {
+                policy
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            });
 
             app.UseHttpsRedirection();
 
