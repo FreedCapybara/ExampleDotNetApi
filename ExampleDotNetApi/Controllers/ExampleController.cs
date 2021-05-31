@@ -26,7 +26,7 @@ namespace ExampleDotNetApi.Controllers
         {
             var examples = await this.exampleService.GetExamplesAsync();
             var result = this.mapper.Map<IEnumerable<ExampleListModel>>(examples);
-            return this.Ok(examples);
+            return this.Ok(result);
         }
 
         [HttpGet("{id}")]
